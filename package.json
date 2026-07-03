@@ -1,0 +1,40 @@
+{
+  "name": "zameeneye-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migration:run": "ts-node src/scripts/runner.ts migration:run",
+    "migration:revert": "ts-node src/scripts/runner.ts migration:revert",
+    "migration:status": "ts-node src/scripts/runner.ts migration:status",
+    "seed:run": "ts-node src/scripts/runner.ts seed:run",
+    "seed:status": "ts-node src/scripts/runner.ts seed:status"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yarrbakr/ZameenEye-AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yarrbakr/ZameenEye-AI/issues"
+  },
+  "homepage": "https://github.com/yarrbakr/ZameenEye-AI#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.22.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.0",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
