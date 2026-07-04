@@ -20,4 +20,7 @@ export class User {
 
     @CreateDateColumn()
     created_at!: Date
+
+    @Column({ nullable: true })
+preferred_language!: "urdu" | "hindi" | "swahili" | "tamil"
 }
