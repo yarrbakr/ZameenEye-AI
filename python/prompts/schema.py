@@ -26,10 +26,10 @@ class Owner(BaseModel):
 
 class IntersectingEvent(BaseModel):
     source: str
-    detected_at: str
     raw_payload: dict
 
 class HazardPayload(BaseModel):
+    checked_at: str
     land: Land
     owner: Owner
     has_active_hazard: bool
