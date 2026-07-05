@@ -2,7 +2,7 @@
 Converts an AgriAdvisory's text into an .mp3 file using gTTS (free, no key).
 """
 from gtts import gTTS
-from prompts.schemas import AgriAdvisory
+from prompts.schema import AgriAdvisory
 
 # gTTS uses its own language codes — map your schema's codes to gTTS's
 GTTS_LANG_MAP = {

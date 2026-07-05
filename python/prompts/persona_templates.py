@@ -2,7 +2,7 @@
 System personas + few-shot examples + localization logic.
 Consumes Kai's exact JSON shape (HazardPayload from schemas.py).
 """
-from prompts.schemas import HazardPayload, LANGUAGE_CODE_MAP
+from prompts.schema import HazardPayload, LANGUAGE_CODE_MAP
 
 BASELINE_SYSTEM_PROMPT = """You are AgriGuard, an agricultural safety advisor.
 You receive structured hazard data about a farmer's land and must produce

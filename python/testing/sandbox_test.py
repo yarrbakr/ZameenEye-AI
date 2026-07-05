@@ -5,8 +5,8 @@ No live API key needed — uses a mock model response.
 import json
 from datetime import datetime, timezone
 from pydantic import ValidationError
-from prompts.schemas import HazardPayload, AgriAdvisory, LANGUAGE_CODE_MAP
-from prompts.personas_templates import build_localized_prompt
+from prompts.schema import HazardPayload, AgriAdvisory, LANGUAGE_CODE_MAP
+from prompts.persona_templates import build_localized_prompt
 
 # --- Static test packets, matching Kai's exact contract ---
 TEST_PACKETS = [
