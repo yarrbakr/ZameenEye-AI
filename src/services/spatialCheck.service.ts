@@ -20,7 +20,7 @@ export const checkLandIntersection = async (landId: string) => {
     const land = landResult[0]
 
     const intersectingEvents = await AppDataSource.query(
-        `SELECT source, detected_at, raw_payload
+        `SELECT source, raw_payload
          FROM "disaster_event"
          WHERE ST_Intersects(
              geom,
@@ -34,6 +34,12 @@ export const checkLandIntersection = async (landId: string) => {
     )
 
     return {
+        // Genuinely new field: when THIS /spatial-check call ran.
+        // Distinct from raw_payload.detected_at, which is the real-world
+        // FIRMS satellite detection time. Thammnah's prompt logic should
+        // keep using raw_payload.detected_at, this field is purely for
+        // knowing how fresh a given check result is, not hazard timing.
+        checked_at: new Date().toISOString(),
         land: {
             id: land.id,
             label: land.label,
@@ -46,9 +52,12 @@ export const checkLandIntersection = async (landId: string) => {
             preferred_language: land.preferred_language,
         },
         has_active_hazard: hasActiveHazard,
+        // Note: no more top-level detected_at per event, that was a duplicate
+        // of raw_payload.detected_at and drifted due to Postgres timestamp
+        // conversion. raw_payload.detected_at is now the single source of truth
+        // for event timing.
         intersecting_events: intersectingEvents.map((e: any) => ({
             source: e.source,
-            detected_at: e.detected_at,
             raw_payload: e.raw_payload,
         })),
     }
