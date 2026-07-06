@@ -70,16 +70,34 @@ def save_snapshot(records: list[dict]) -> None:
         f.write(json.dumps({"fetched_at_utc": snapshot["fetched_at_utc"],
                              "record_count": len(records)}) + "\n")
     logger.info("Saved %d hotspot records -> %s", len(records), LATEST_FILE)
-    
+
 
 def push_to_backend(records: list[dict]) -> None:
     if not records:
         logger.info("No records to push.")
         return
+
+    # Build payload matching Kai's exact expected shape
+    formatted_records = [
+        {
+            "latitude": r["latitude"],
+            "longitude": r["longitude"],
+            "brightness": r["brightness"],
+            "frp": r["frp"],
+            "confidence": r["confidence_raw"],  # sending raw value per her sample — confirm with her
+            "acq_date": r["acq_date"],
+            "acq_time": r["acq_time"],
+            "satellite": r["satellite"],
+        }
+        for r in records
+    ]
+
     try:
-        resp = requests.post(BACKEND_INGEST_URL, json={"records": records}, timeout=15)
+        resp = requests.post(BACKEND_INGEST_URL, json={"records": formatted_records}, timeout=15)
         resp.raise_for_status()
-        logger.info("Pushed %d records to backend -> %s", len(records), BACKEND_INGEST_URL)
+        result = resp.json()
+        logger.info("Backend response: inserted=%s skipped=%s total=%s",
+                    result.get("inserted"), result.get("skipped"), result.get("total"))
     except requests.exceptions.RequestException as e:
         logger.error("Failed to push records to backend: %s", e)
 
