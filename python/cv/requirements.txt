@@ -1,0 +1,17 @@
+# ZameenEye CV lane (satellite segmentation) — deploy target: AMD GPU cloud (Kai).
+# SEPARATE from python/requirements.txt on purpose: the CPU voice service must stay
+# lean (no torch), so its Render deploy doesn't drag in ~2GB of ML wheels.
+
+ultralytics>=8.2
+opencv-python-headless
+pillow
+numpy
+
+# torch / torchvision: install the build that MATCHES the deploy hardware.
+#   AMD GPU (ROCm):   pip install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.2
+#   NVIDIA (CUDA):    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+#   CPU (dev/laptop): pip install torch torchvision
+# Listed here so `pip install -r` on a CPU box still works; override with the ROCm
+# index URL above when deploying on the AMD machine.
+torch
+torchvision

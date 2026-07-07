@@ -3,4 +3,15 @@ node_modules/
 dist/
 __pycache__/
 venv/
+.venv/
 *.pyc
+
+# planning docs (may contain personal info — e.g. the uncle's phone number)
+documents/
+
+# generated audio replies (written to system temp at runtime, but just in case)
+advisory_*.mp3
+
+# CV lane: model weights auto-downloaded at runtime + segmentation outputs
+*.pt
+cv_out/

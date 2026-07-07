@@ -48,7 +48,9 @@ src/
 
 **To add a new route:** write the logic in `services/`, wire it up in `controllers/`, define the path in `routes/`, then mount that router in `app.ts`.
 
-**Abu Bakr's webhook router mounts here too** — add it in `app.ts` alongside `spatialRoutes`, don't create a second entrypoint.
+**Abu Bakr's webhook is NOT a router here.** It's a **standalone Python service**
+(`python/voice/`, FastAPI) that owns both `GET`/`POST /webhook` and calls `POST /spatial-check`
+over HTTP (see `SPATIAL_CHECK_URL` in `.env.example`). Kai's `app.ts` stays untouched.
 
 ---
 
@@ -116,7 +118,8 @@ Notes:
 - Always returned, even when `has_active_hazard` is false, Thammnah's prompt builder uses this for an "all clear" message path.
 - `intersecting_events` includes **all** geometrically intersecting events regardless of confidence, for context. `has_active_hazard` only flips true if at least one event's confidence exceeds 70.
 - `raw_payload` keys are normalized (`intensity` replaces source-specific fields like `brightness`/`FRP`), this normalization happens in `/ingest/firms` at write time, not read time.
-- `preferred_language` is nullable until every farmer's profile actually sets it. Confirm with Thammnah how her side should handle `null`.
+- `preferred_language` is nullable until every farmer's profile actually sets it. Confirm with Thammnah how her side should handle `null`. **The voice service (`python/voice/pipeline.py`) defaults `null` → `"urdu"`** (PK market) when building the `HazardPayload`.
+- The voice service also injects a `detected_at` per event when this endpoint omits it (falls back to `raw_payload.detected_at`/`acq_date`, then `checked_at`), because `HazardPayload.IntersectingEvent` requires it.
 
 ---
 

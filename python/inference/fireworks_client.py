@@ -4,8 +4,8 @@ Day 5-6: Real Fireworks AI calls using Llama-3-70B, consuming Kai's exact JSON.
 import os, json, re
 from fireworks.client import Fireworks
 from pydantic import ValidationError
-from prompts.schemas import HazardPayload, AgriAdvisory, LANGUAGE_CODE_MAP
-from prompts.personas_templates import build_localized_prompt
+from prompts.schema import HazardPayload, AgriAdvisory, LANGUAGE_CODE_MAP
+from prompts.persona_templates import build_localized_prompt
 
 client = Fireworks(api_key=os.environ["FIREWORKS_API_KEY"])
 

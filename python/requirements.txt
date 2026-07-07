@@ -1,0 +1,22 @@
+# ZameenEye AI — Python side (AI pipeline + voice service)
+# Install from the python/ folder:  pip install -r requirements.txt
+# Run the voice service from python/:  uvicorn voice.main:app --port 8000
+
+# --- Voice service: webhook + ASR (Abu Bakr) ---
+fastapi
+uvicorn[standard]
+httpx
+python-dotenv
+faster-whisper          # local Urdu ASR — CPU, no cloud key, no AMD needed
+
+# --- AI pipeline: Fireworks advisory + gTTS (Sabrith) ---
+fireworks-ai            # provides `from fireworks.client import Fireworks`
+pydantic>=2
+gtts
+
+# --- FIRMS ingestion ---
+requests
+tenacity
+
+# --- phone -> landId DB fallback (read-only; optional, config map is primary) ---
+psycopg[binary]
