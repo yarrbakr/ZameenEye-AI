@@ -22,5 +22,5 @@ export class User {
     created_at!: Date
 
     @Column({ nullable: true })
-preferred_language!: "urdu" | "hindi" | "swahili" | "tamil"
+preferred_language!: "urdu" | "hindi" | "swahili" | "tamil|" | "english"
 }

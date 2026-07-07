@@ -49,7 +49,10 @@ export const checkLandIntersection = async (landId: string) => {
             name: land.owner_name,
             phone_number: land.phone_number,
             role: land.owner_role,
-            preferred_language: land.preferred_language,
+            // Falls back to "english" when a farmer hasn't set a language
+            // preference yet. Everyone with an actual preference set still
+            // gets that language, this only covers the null case.
+            preferred_language: land.preferred_language ?? "english",
         },
         has_active_hazard: hasActiveHazard,
         // Note: no more top-level detected_at per event, that was a duplicate
