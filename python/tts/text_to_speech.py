@@ -41,6 +41,10 @@ if __name__ == "__main__":
                       risk_level="clear", advisory_text="தற்போது ஆபத்து இல்லை.",
                       recommended_action="None needed", confidence="high",
                       source_timestamp_utc="2026-07-04T10:00:00Z"),
+        AgriAdvisory(language="en", location_name="Nairobi Field B", hazard_type="fire",
+                      risk_level="moderate", advisory_text="A fire has been detected nearby. Please move your livestock to safety.",
+                      recommended_action="Move livestock", confidence="high",
+                      source_timestamp_utc="2026-07-05T13:00:00Z"),
     ]
     for i, case in enumerate(test_cases):
         synthesize_advisory(case, f"test_{case.language}_{i}.mp3")
