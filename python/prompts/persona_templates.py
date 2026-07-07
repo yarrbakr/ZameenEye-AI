@@ -22,6 +22,7 @@ LOCALE_INSTRUCTIONS = {
     "hi": "Respond only in Hindi (हिन्दी), using simple rural vocabulary a farmer would understand.",
     "sw": "Respond only in Swahili (Kiswahili), using simple rural vocabulary a farmer would understand.",
     "ta": "Respond only in Tamil (தமிழ்), using simple rural vocabulary a farmer would understand.",
+    "en": "Respond only in English, using simple rural vocabulary a farmer would understand.",
 }
 
 FEW_SHOT_EXAMPLES = [
