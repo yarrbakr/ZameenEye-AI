@@ -59,6 +59,19 @@ TEST_PACKETS = [
                               "detected_at": "2026-07-04T08:00:00Z"}}
         ],
     },
+    # Active hazard, farmer, English
+    {
+         "checked_at": "2026-07-05T14:50:00.000Z",
+    "land": {"id": "5", "label": "Nairobi Field B", "country": "Kenya"},
+    "owner": {"name": "John", "phone_number": "+254xxx", "role": "farmer",
+               "preferred_language": "english"},
+    "has_active_hazard": True,
+    "intersecting_events": [
+        {"source": "nasa_firms",
+         "raw_payload": {"confidence": 78, "intensity": 290,
+                          "detected_at": "2026-07-05T13:00:00Z"}}
+        ],
+    },
 ]
 
 

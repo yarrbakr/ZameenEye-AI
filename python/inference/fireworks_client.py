@@ -9,9 +9,9 @@ from prompts.personas_templates import build_localized_prompt
 
 client = Fireworks(api_key=os.environ["FIREWORKS_API_KEY"])
 
-MODEL = "accounts/fireworks/models/llama-v3-70b-instruct"
+MODEL = "accounts/fireworks/models/llama-v3p3-70b-instruct"
 TEMPERATURE = 0.3
-MAX_TOKENS = 300
+MAX_TOKENS = 1024
 
 BANNED_PATTERNS = [r"\bpanic\b", r"\bdie\b", r"\bcertain death\b"]
 AGRI_KEYWORDS = {
