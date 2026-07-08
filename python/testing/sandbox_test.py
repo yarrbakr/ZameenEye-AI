@@ -18,6 +18,7 @@ TEST_PACKETS = [
         "owner": {"name": "Ali", "phone_number": "+92xxx", "role": "farmer",
                    "preferred_language": "urdu"},
         "has_active_hazard": True,
+        "alert_level": "high",
         "intersecting_events": [
             {"source": "nasa_firms",
              "raw_payload": {"confidence": 85, "intensity": 340,
@@ -31,6 +32,7 @@ TEST_PACKETS = [
         "owner": {"name": "Ravi", "phone_number": "+91xxx", "role": "agency_admin",
                    "preferred_language": "hindi"},
         "has_active_hazard": True,
+        "alert_level": "critical",
         "intersecting_events": [
             {"source": "nasa_firms",
              "raw_payload": {"confidence": 92, "intensity": 410,
@@ -44,6 +46,7 @@ TEST_PACKETS = [
         "owner": {"name": "Amina", "phone_number": "+254xxx", "role": "farmer",
                    "preferred_language": "swahili"},
         "has_active_hazard": False,
+        "alert_level": "low",
         "intersecting_events": [],
     },
     # All clear but with sub-threshold events present, Tamil
@@ -53,6 +56,7 @@ TEST_PACKETS = [
         "owner": {"name": "Priya", "phone_number": "+91xxx", "role": "farmer",
                    "preferred_language": "tamil"},
         "has_active_hazard": False,
+        "alert_level": "moderate",
         "intersecting_events": [
             {"source": "nasa_firms",
              "raw_payload": {"confidence": 40, "intensity": 50,
