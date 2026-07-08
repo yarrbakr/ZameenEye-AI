@@ -1,6 +1,7 @@
 import { AppDataSource } from "../config/database"
 
 const CONFIDENCE_THRESHOLD = 70
+const CLOUD_COVER_THRESHOLD = 60 // 60% limit recommended by architecture sync
 
 export const checkLandIntersection = async (landId: string) => {
     const landResult = await AppDataSource.query(
@@ -19,8 +20,9 @@ export const checkLandIntersection = async (landId: string) => {
 
     const land = landResult[0]
 
+    // 1. Fetch the intersecting events along with our newly migrated 'alert_level' column
     const intersectingEvents = await AppDataSource.query(
-        `SELECT source, raw_payload
+        `SELECT source, raw_payload, alert_level
          FROM "disaster_event"
          WHERE ST_Intersects(
              geom,
@@ -29,16 +31,36 @@ export const checkLandIntersection = async (landId: string) => {
         [landId]
     )
 
-    const hasActiveHazard = intersectingEvents.some(
-        (e: any) => e.raw_payload?.confidence > CONFIDENCE_THRESHOLD
+    // 2. Process events and filter out cloud-obscured data/noise
+    let maxAlertLevel: "LOW" | "MEDIUM" | "HIGH" = "LOW"
+    
+    const processedEvents = intersectingEvents.map((e: any) => {
+        const cloudCover = e.raw_payload?.cloud_cover_percentage || 0
+        let currentAlertLevel = e.alert_level || "LOW"
+
+        // Senior Architect Ali's Noise Filter Check:
+        if (cloudCover > CLOUD_COVER_THRESHOLD) {
+            console.warn(`[Spatial Check] High cloud cover (${cloudCover}%) detected on event. Downgrading to LOW risk to prevent false notifications.`);
+            currentAlertLevel = "LOW"
+        }
+
+        // Track the highest risk tier currently impacting the farmer's property
+        if (currentAlertLevel === "HIGH") maxAlertLevel = "HIGH"
+        else if (currentAlertLevel === "MEDIUM" && maxAlertLevel !== "HIGH") maxAlertLevel = "MEDIUM"
+
+        return {
+            source: e.source,
+            alert_level: currentAlertLevel,
+            raw_payload: e.raw_payload,
+        }
+    })
+
+    // 3. Determine if an active critical push notification is necessary
+    const hasActiveHazard = processedEvents.some(
+        (e: any) => e.raw_payload?.confidence > CONFIDENCE_THRESHOLD && e.alert_level === "HIGH"
     )
 
     return {
-        // Genuinely new field: when THIS /spatial-check call ran.
-        // Distinct from raw_payload.detected_at, which is the real-world
-        // FIRMS satellite detection time. Thammnah's prompt logic should
-        // keep using raw_payload.detected_at, this field is purely for
-        // knowing how fresh a given check result is, not hazard timing.
         checked_at: new Date().toISOString(),
         land: {
             id: land.id,
@@ -49,19 +71,11 @@ export const checkLandIntersection = async (landId: string) => {
             name: land.owner_name,
             phone_number: land.phone_number,
             role: land.owner_role,
-            // Falls back to "english" when a farmer hasn't set a language
-            // preference yet. Everyone with an actual preference set still
-            // gets that language, this only covers the null case.
             preferred_language: land.preferred_language ?? "english",
         },
         has_active_hazard: hasActiveHazard,
-        // Note: no more top-level detected_at per event, that was a duplicate
-        // of raw_payload.detected_at and drifted due to Postgres timestamp
-        // conversion. raw_payload.detected_at is now the single source of truth
-        // for event timing.
-        intersecting_events: intersectingEvents.map((e: any) => ({
-            source: e.source,
-            raw_payload: e.raw_payload,
-        })),
+        // Global severity tracking token passed to Abu Bakr & Thammnah
+        overall_alert_level: maxAlertLevel, 
+        intersecting_events: processedEvents,
     }
 }

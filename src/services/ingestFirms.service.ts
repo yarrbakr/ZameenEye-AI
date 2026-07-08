@@ -48,6 +48,14 @@ type FirmsRecord = {
     satellite?: string
 }
 
+// Helper to determine alert severity tier explicitly from normalized confidence.
+// Helps mitigate alert fatigue by sorting low-confidence thermal artifacts into LOW/MEDIUM.
+const determineAlertLevel = (confidence: number): "LOW" | "MEDIUM" | "HIGH" => {
+    if (confidence >= 80) return "HIGH"      // Definite threat; immediate WhatsApp voice push
+    if (confidence >= 50) return "MEDIUM"    // Likely threat; saved to digest loop
+    return "LOW"                             // Low confidence; passive visual display only
+}
+
 // Takes a batch of raw FIRMS records and writes each one into disaster_event,
 // normalizing field names/values along the way so downstream consumers
 // (like /spatial-check) always see a consistent shape regardless of which
@@ -63,6 +71,9 @@ export const ingestFirmsRecords = async (records: FirmsRecord[]) => {
             // a string sneaking through and silently evaluating false.
             const confidence = normalizeConfidence(record.confidence)
 
+            // Dynamic Alert Classification based on confidence
+            const alertLevel = determineAlertLevel(confidence)
+
             // Prefer FRP (fire radiative power) as the intensity metric when present,
             // since it's generally considered more meaningful than raw brightness.
             // Falls back to brightness if FRP is missing or zero.
@@ -75,9 +86,10 @@ export const ingestFirmsRecords = async (records: FirmsRecord[]) => {
             // Note: WKT is (longitude, latitude) order, NOT (latitude, longitude).
             const pointWKT = `POINT(${record.longitude} ${record.latitude})`
 
+            // Updated query mapping directly to the 'alert_level' Enum column added via our migration
             await AppDataSource.query(
-                `INSERT INTO "disaster_event" (source, geom, raw_payload, detected_at)
-                 VALUES ($1, ST_SetSRID(ST_GeomFromText($2), 4326), $3, $4)`,
+                `INSERT INTO "disaster_event" (source, geom, raw_payload, alert_level, detected_at)
+                 VALUES ($1, ST_SetSRID(ST_GeomFromText($2), 4326), $3, $4, $5)`,
                 [
                     "nasa_firms",
                     pointWKT,
@@ -89,6 +101,7 @@ export const ingestFirmsRecords = async (records: FirmsRecord[]) => {
                         intensity,
                         detected_at: detectedAt,
                     }),
+                    alertLevel, // Sets 'HIGH', 'MEDIUM', or 'LOW' column state
                     detectedAt,
                 ]
             )
