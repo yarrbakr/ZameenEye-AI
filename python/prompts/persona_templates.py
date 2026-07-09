@@ -15,6 +15,9 @@ Rules:
 - End with one practical next step.
 - If role is "agency_admin", you may use slightly more technical language
   (mention confidence %, event counts). If role is "farmer", keep it simple.
+- If the farmer asked a specific question, ANSWER IT DIRECTLY in your first
+  sentence. If you don't have the data to answer it (e.g. weather, prices), say
+  so briefly, then give the relevant hazard status for their land.
 """
 
 LOCALE_INSTRUCTIONS = {
@@ -49,9 +52,13 @@ def _build_examples_text() -> str:
     )
 
 
-def build_localized_prompt(payload: HazardPayload) -> tuple[str, str]:
+def build_localized_prompt(payload: HazardPayload, transcript: str = "") -> tuple[str, str]:
     """
     Takes Kai's validated payload, returns (prompt_text, language_code).
+
+    `transcript` is the farmer's transcribed voice note (optional). When present,
+    the prompt asks the LLM to answer THAT specific question using the hazard data
+    as context; when blank, the prompt is a plain hazard status report (unchanged).
     """
     lang_code = LANGUAGE_CODE_MAP[payload.owner.preferred_language]
 
@@ -72,13 +79,45 @@ def build_localized_prompt(payload: HazardPayload) -> tuple[str, str]:
         "event_count": len(payload.intersecting_events),
     }
 
+    lang_name = {"ur": "Urdu", "hi": "Hindi", "sw": "Swahili", "ta": "Tamil"}.get(
+        lang_code, lang_code
+    )
+
+    # When the farmer asked something specific, pin the answer to their question
+    # (grounded in the hazard data above). Blank transcript -> no block added, so
+    # the prompt stays identical to the original status-report behaviour.
+    question_block = ""
+    if transcript and transcript.strip():
+        question_block = (
+            f"--- THE FARMER'S QUESTION (transcribed voice note) — answer THIS ---\n"
+            f'"{transcript.strip()}"\n'
+            f"This is the most important thing to address. Answer their specific "
+            f"question directly, using the hazard data provided below as context. "
+            f"Stay grounded in their land and its hazards; do not invent facts beyond "
+            f"the data. Do not just repeat a generic status report if they asked "
+            f"something specific.\n\n"
+        )
+
     prompt = (
         f"{BASELINE_SYSTEM_PROMPT}\n\n"
-        f"--- Examples ---\n{_build_examples_text()}\n\n"
-        f"--- Now generate advice for this data ---\n{hazard_summary}\n\n"
-        f"{LOCALE_INSTRUCTIONS[lang_code]}\n"
-        f"Return ONLY valid JSON matching this schema: language, location_name, "
-        f"hazard_type, risk_level, advisory_text, recommended_action, confidence, "
-        f"source_timestamp_utc."
+        f"{question_block}"
+        f"--- Style examples (copy the calm tone & length, NOT the wording) ---\n"
+        f"{_build_examples_text()}\n\n"
+        f"--- Hazard data for this farmer's land ---\n{hazard_summary}\n\n"
+        f"{LOCALE_INSTRUCTIONS[lang_code]}\n\n"
+        f"Return ONLY a valid JSON object (no markdown, no code fences) with EXACTLY "
+        f"these fields. The quoted options below are fixed English tokens — copy them "
+        f"verbatim, do NOT translate or reword them:\n"
+        f'  "language": "{lang_code}"\n'
+        f'  "location_name": <the location as a short string>\n'
+        f'  "hazard_type": one of "fire" | "flood" | "storm" | "other" | "none"\n'
+        f'  "risk_level": one of "low" | "moderate" | "high" | "critical" | "clear"\n'
+        f'  "confidence": one of "low" | "medium" | "high" '
+        f"(map any numeric confidence to a bucket; do not output a number)\n"
+        f'  "source_timestamp_utc": <ISO-8601 UTC time string>\n'
+        f'  "advisory_text": <the advice, written in {lang_name}>\n'
+        f'  "recommended_action": <one short next step, written in {lang_name}>\n'
+        f"Only advisory_text and recommended_action are written in {lang_name}; every "
+        f"other field value must be exactly one of the English tokens listed above."
     )
     return prompt, lang_code
