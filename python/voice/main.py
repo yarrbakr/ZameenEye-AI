@@ -9,15 +9,27 @@ We ACK every POST with 200 immediately and do the real work in a background task
 note is downloaded from Meta, transcribed (ASR), run through the hazard pipeline,
 and answered with an Urdu audio advisory.
 """
+import asyncio
 import os
+import sys
 
-from dotenv import load_dotenv
+# Windows consoles default to cp1252 and raise UnicodeEncodeError when we log
+# Urdu/Hindi text (transcripts, advisories). Force UTF-8 so a debug print can
+# never crash a message handler — which would otherwise drop a good reply to the
+# error fallback purely because of console encoding.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8")
+    except Exception:  # noqa: BLE001 - not every stream supports reconfigure
+        pass
+
+from dotenv import load_dotenv  # noqa: E402
 
 # Load .env BEFORE importing .pipeline: it pulls in inference.fireworks_client,
 # which reads FIREWORKS_API_KEY from the environment at import time.
 load_dotenv()
 
-from fastapi import BackgroundTasks, FastAPI, Request  # noqa: E402
+from fastapi import FastAPI, Request  # noqa: E402
 from fastapi.responses import PlainTextResponse  # noqa: E402
 
 from .asr import transcribe  # noqa: E402
@@ -25,6 +37,11 @@ from .pipeline import run as run_pipeline  # noqa: E402
 from .whatsapp import download_media, send_audio, send_text  # noqa: E402
 
 app = FastAPI(title="ZameenEye Voice")
+
+# Strong refs to in-flight background tasks. asyncio only keeps weak refs to
+# tasks, so without this a task can be garbage-collected mid-flight. We add on
+# dispatch and discard on completion.
+_inflight: set[asyncio.Task] = set()
 
 
 # ===================== MESSAGE HANDLING =====================
@@ -81,15 +98,25 @@ async def verify(request: Request):
 
 
 @app.post("/webhook")
-async def receive(request: Request, background: BackgroundTasks):
-    """Receive inbound messages; ACK 200 fast and process in the background."""
+async def receive(request: Request):
+    """Receive inbound messages; ACK 200 fast and process in the background.
+
+    We dispatch each message with asyncio.create_task (NOT Starlette
+    BackgroundTasks): a BackgroundTask runs *before* the response is released to
+    the client, so the ACK would block on the whole voice loop (media download +
+    ASR + spatial-check + Fireworks + gTTS + send — tens of seconds). Meta times
+    out webhooks in a few seconds and retries on timeout, causing duplicate
+    processing. create_task detaches the work so we ACK 200 immediately.
+    """
     try:
         data = await request.json()
         for entry in data.get("entry", []):
             for change in entry.get("changes", []):
                 value = change.get("value", {})
                 for msg in value.get("messages", []):
-                    background.add_task(handle_message, msg)
+                    task = asyncio.create_task(handle_message(msg))
+                    _inflight.add(task)
+                    task.add_done_callback(_inflight.discard)
     except Exception as exc:  # noqa: BLE001 - always ACK so Meta doesn't retry-storm
         print(f"[webhook] parse error: {exc}")
     return PlainTextResponse("OK", status_code=200)

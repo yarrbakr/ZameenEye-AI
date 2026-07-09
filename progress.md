@@ -19,7 +19,8 @@
 - **Merge rule:** Open a PR from `feature/voice-asr` → `main` and merge it **ONLY AFTER
   every one of my tasks in §1 (Day 1–6) is checked `[x]`.** Do not merge partial work.
 - Push the branch to `origin` when ready to share / open the PR (`git push -u origin feature/voice-asr`).
-  **Nothing has been pushed yet — all work is local until I say so.**
+  **`feature/voice-asr` is pushed to `origin`** (fixes land here). `main` still untouched; open the PR only per the
+  merge rule above.
 - Before opening the PR: rebase/merge latest `main` in, resolve conflicts, confirm the full
   loop (§5) works end-to-end.
 
@@ -118,9 +119,16 @@
 - [x] ~~`fireworks_client.py` broken imports~~ — **FIXED** → `prompts.schema`, `prompts.persona_templates`.
 - [x] ~~No `requirements.txt` / `.env.example`~~ — **ADDED** (`python/requirements.txt`, root `.env.example`).
 - [x] ~~`documents/` untracked / public-push risk~~ — **git-ignored.**
-- [~] `fireworks_client.py` builds its Fireworks client at **import time** (`os.environ["FIREWORKS_API_KEY"]`).
-      The voice service works around it (`main.py` loads `.env` before importing the pipeline; smoke-tested), but a
-      real/empty key must exist to boot. _Nice-to-have:_ ask Sabrith to lazy-init the client.
+- [x] ~~`fireworks_client.py` builds its Fireworks client at **import time**~~ — **FIXED (Day 6).** Local webhook
+      testing showed the newer `fireworks` client rejects an **empty** key with `AuthenticationError` at import, so
+      the voice service could no longer boot at all (`.env` key is blank pending real credits). Lazy-init'd the client
+      (`_get_client()`, built on first call) — the module imports cleanly with no/empty key.
+- [x] **Webhook ACK was blocking (~1.4s+) — FIXED (Day 6).** Starlette `BackgroundTasks` run *before* the response is
+      released, and `resolver._query_db` uses **synchronous psycopg**, which froze the event loop → the 200 ACK stalled
+      on the DB connect (would be tens of seconds with real ASR/Fireworks → Meta webhook timeout + retry storm).
+      Fix: dispatch via `asyncio.create_task` (with a strong-ref set so tasks aren't GC'd) **and** offload
+      `resolve_land_id` with `asyncio.to_thread`. Verified: ACK dropped from ~1400ms → ~3ms with the detached task
+      still running after the ACK.
 - [ ] Confirm `preferred_language` null-handling end-to-end (we default → `urdu`; confirm with Sabrith).
 
 ## 7. Backlog / future
@@ -131,7 +139,7 @@
 - [>] Use the transcript (`text`) for intent / which-land selection (advisory is land-driven for now)
 - [>] Transcode mp3 → ogg/opus so the reply renders as a true WhatsApp voice-note bubble
 - [>] Move the offline webhook smoke test (scratchpad) into the repo as a real test
-- [>] Lazy-init the Fireworks client (see §6)
+- [x] ~~Lazy-init the Fireworks client~~ — **done (Day 6, see §6).**
 
 ## 8. Decision log
 - 2026-07-06 — Repo copied into `D:\HACKATHONS\AMD-Developer-Hackathon-II` with full git history
