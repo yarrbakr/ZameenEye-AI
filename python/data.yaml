@@ -1,0 +1,10 @@
+path: C:/Users/Kainat/ZameenEye-AI/python/cv/Wildfire-1
+
+
+
+
+test: test
+train: train
+val: valid
+nc: 1
+names: ['wildfire']
