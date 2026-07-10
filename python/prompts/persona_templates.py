@@ -15,6 +15,9 @@ Rules:
 - End with one practical next step.
 - If role is "agency_admin", you may use slightly more technical language
   (mention confidence %, event counts). If role is "farmer", keep it simple.
+- Adjust your tone and urgency based on alert_level: "low" = calm/informational,
+  "moderate" = attentive but not alarming, "high" = clear urgency, act soon,
+  "critical" = immediate action needed, direct and serious tone.
 """
 
 LOCALE_INSTRUCTIONS = {
@@ -71,6 +74,7 @@ def build_localized_prompt(payload: HazardPayload) -> tuple[str, str]:
         "confidence": top_event.raw_payload.get("confidence") if top_event else None,
         "intensity": top_event.raw_payload.get("intensity") if top_event else None,
         "event_count": len(payload.intersecting_events),
+        "alert_level": payload.alert_level,
     }
 
     prompt = (

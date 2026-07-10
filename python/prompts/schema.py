@@ -29,10 +29,12 @@ class IntersectingEvent(BaseModel):
     raw_payload: dict
 
 class HazardPayload(BaseModel):
+    checked_at: str
     land: Land
     owner: Owner
     has_active_hazard: bool
     intersecting_events: list[IntersectingEvent] = []
+    alert_level: Literal["low", "moderate", "high", "critical"] = "low"
 
 # Maps Kai's full language names to your short codes
 LANGUAGE_CODE_MAP = {
