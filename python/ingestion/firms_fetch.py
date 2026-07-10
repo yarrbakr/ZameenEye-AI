@@ -5,10 +5,12 @@ import requests
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
 FIRMS_MAP_KEY = os.environ.get("FIRMS_MAP_KEY", "PASTE_YOUR_KEY_HERE")
+BACKEND_INGEST_URL = os.environ.get("BACKEND_INGEST_URL", "http://localhost:3000/ingest/firms")
 SOURCE = "VIIRS_SNPP_NRT"
 BOUNDING_BOX = "60,5,90,35"
 DAY_RANGE = 1
 POLL_INTERVAL_SECONDS = 900
+CONFIDENCE_MAP = {"low": 30, "nominal": 60, "high": 90}
 
 DATA_DIR = Path(__file__).parent / "data_lake"
 DATA_DIR.mkdir(exist_ok=True)
@@ -38,11 +40,15 @@ def parse_firms_csv(raw_csv: str) -> list[dict]:
     records = []
     for row in reader:
         try:
+            raw_confidence = row.get("confidence", "unknown")
+            numeric_confidence = CONFIDENCE_MAP.get(str(raw_confidence).lower(), None)
+
             records.append({
                 "latitude": float(row["latitude"]),
                 "longitude": float(row["longitude"]),
                 "brightness": float(row.get("bright_ti4", row.get("brightness", 0)) or 0),
-                "confidence": row.get("confidence", "unknown"),
+                "confidence_raw": raw_confidence,
+                "confidence": numeric_confidence,
                 "acq_date": row.get("acq_date"),
                 "acq_time": row.get("acq_time"),
                 "satellite": row.get("satellite", SOURCE),
@@ -65,9 +71,40 @@ def save_snapshot(records: list[dict]) -> None:
                              "record_count": len(records)}) + "\n")
     logger.info("Saved %d hotspot records -> %s", len(records), LATEST_FILE)
 
+
+def push_to_backend(records: list[dict]) -> None:
+    if not records:
+        logger.info("No records to push.")
+        return
+
+    # Build payload matching Kai's exact expected shape
+    formatted_records = [
+        {
+            "latitude": r["latitude"],
+            "longitude": r["longitude"],
+            "brightness": r["brightness"],
+            "frp": r["frp"],
+            "confidence": r["confidence_raw"],  # sending raw value per her sample — confirm with her
+            "acq_date": r["acq_date"],
+            "acq_time": r["acq_time"],
+            "satellite": r["satellite"],
+        }
+        for r in records
+    ]
+
+    try:
+        resp = requests.post(BACKEND_INGEST_URL, json={"records": formatted_records}, timeout=15)
+        resp.raise_for_status()
+        result = resp.json()
+        logger.info("Backend response: inserted=%s skipped=%s total=%s",
+                    result.get("inserted"), result.get("skipped"), result.get("total"))
+    except requests.exceptions.RequestException as e:
+        logger.error("Failed to push records to backend: %s", e)
+
 def run_once() -> list[dict]:
     records = parse_firms_csv(fetch_firms_csv())
     save_snapshot(records)
+    push_to_backend(records)
     return records
 
 def run_forever():
