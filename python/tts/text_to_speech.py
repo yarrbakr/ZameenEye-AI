@@ -10,6 +10,7 @@ GTTS_LANG_MAP = {
     "hi": "hi",
     "sw": "sw",
     "ta": "ta",
+    "en": "en",
 }
 
 

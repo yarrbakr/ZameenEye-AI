@@ -3,7 +3,7 @@ from typing import Literal, Optional
 
 # ---- Output schema: what YOUR pipeline produces ----
 class AgriAdvisory(BaseModel):
-    language: Literal["ur", "hi", "sw", "ta"]
+    language: Literal["ur", "hi", "sw", "ta", "en"]
     location_name: str
     hazard_type: Literal["fire", "flood", "storm", "other", "none"]
     risk_level: Literal["low", "moderate", "high", "critical", "clear"]
@@ -22,7 +22,7 @@ class Owner(BaseModel):
     name: str
     phone_number: str
     role: Literal["farmer", "agency_admin"]
-    preferred_language: Literal["urdu", "hindi", "swahili", "tamil"]
+    preferred_language: Literal["urdu", "hindi", "swahili", "tamil", "english"]
 
 class IntersectingEvent(BaseModel):
     source: str
@@ -41,4 +41,5 @@ LANGUAGE_CODE_MAP = {
     "hindi": "hi",
     "swahili": "sw",
     "tamil": "ta",
+    "english": "en",
 }

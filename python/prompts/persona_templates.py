@@ -25,6 +25,7 @@ LOCALE_INSTRUCTIONS = {
     "hi": "Respond only in Hindi (हिन्दी), using simple rural vocabulary a farmer would understand.",
     "sw": "Respond only in Swahili (Kiswahili), using simple rural vocabulary a farmer would understand.",
     "ta": "Respond only in Tamil (தமிழ்), using simple rural vocabulary a farmer would understand.",
+    "en": "Respond only in English, using simple rural vocabulary a farmer would understand.",
 }
 
 FEW_SHOT_EXAMPLES = [
@@ -79,9 +80,8 @@ def build_localized_prompt(payload: HazardPayload, transcript: str = "") -> tupl
         "event_count": len(payload.intersecting_events),
     }
 
-    lang_name = {"ur": "Urdu", "hi": "Hindi", "sw": "Swahili", "ta": "Tamil"}.get(
-        lang_code, lang_code
-    )
+    lang_name = {"ur": "Urdu", "hi": "Hindi", "sw": "Swahili", "ta": "Tamil",
+                 "en": "English"}.get(lang_code, lang_code)
 
     # When the farmer asked something specific, pin the answer to their question
     # (grounded in the hazard data above). Blank transcript -> no block added, so

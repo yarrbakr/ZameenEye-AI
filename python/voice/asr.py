@@ -25,17 +25,23 @@ def _get_model():
     return _model
 
 
-def _transcribe_sync(audio_bytes: bytes, filename: str) -> str:
-    """Blocking transcription: write bytes to a temp file, decode, join segment text."""
+def _transcribe_sync(audio_bytes: bytes, filename: str) -> tuple[str, str]:
+    """Blocking transcription. Returns (text, detected_language_code).
+
+    WHISPER_LANG unset or "auto" -> let Whisper auto-detect the language, so an
+    English voice note is recognized as English instead of being force-decoded into
+    Urdu script. Set WHISPER_LANG to a concrete code (e.g. "ur") to hard-pin it.
+    """
     suffix = os.path.splitext(filename)[1] or ".ogg"
     tmp = tempfile.NamedTemporaryFile(suffix=suffix, delete=False)
     try:
         tmp.write(audio_bytes)
         tmp.close()
-        segments, _info = _get_model().transcribe(
-            tmp.name, language=os.getenv("WHISPER_LANG", "ur")
-        )
-        return "".join(seg.text for seg in segments).strip()
+        hint = os.getenv("WHISPER_LANG", "").strip().lower()
+        lang_arg = None if hint in ("", "auto") else hint
+        segments, info = _get_model().transcribe(tmp.name, language=lang_arg)
+        text = "".join(seg.text for seg in segments).strip()
+        return text, (getattr(info, "language", "") or "")
     finally:
         try:
             os.remove(tmp.name)
@@ -43,10 +49,10 @@ def _transcribe_sync(audio_bytes: bytes, filename: str) -> str:
             pass
 
 
-async def transcribe(audio_bytes: bytes, filename: str = "audio.ogg") -> str:
-    """Transcribe WhatsApp audio to text; returns "" on any failure (safe fallback)."""
+async def transcribe(audio_bytes: bytes, filename: str = "audio.ogg") -> tuple[str, str]:
+    """Transcribe WhatsApp audio; returns (text, detected_lang). ("", "") on failure."""
     try:
         return await asyncio.to_thread(_transcribe_sync, audio_bytes, filename)
     except Exception as exc:
         print(f"[asr] transcription failed: {exc}")
-        return ""
+        return "", ""

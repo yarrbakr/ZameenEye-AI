@@ -70,10 +70,14 @@ pl.resolve_land_id = lambda phone: "land-uuid-123"       # stub the seed-landId 
 pl.httpx = types.SimpleNamespace(AsyncClient=_Client)     # stub Kai's live /spatial-check
 pl.generate_advisory = lambda payload, text="": canned   # stub the Fireworks call (payload, transcript)
 
-print("[2] running the real pipeline.run() with those three stubbed ...")
-mp3 = asyncio.run(pl.run("923001234567", "میری فصل کو آگ کا خطرہ ہے"))
+print("[2] running the real pipeline.run() (returns the advisory) with those stubbed ...")
+advisory = asyncio.run(pl.run("923001234567", "میری فصل کو آگ کا خطرہ ہے", "ur"))
+assert advisory is not None and advisory.language == "ur", advisory
+print("[3] synthesize() turns the advisory into an mp3 (Urdu -> voice reply) ...")
+mp3 = asyncio.run(pl.synthesize(advisory, "923001234567"))
 ok = bool(mp3) and os.path.exists(mp3) and os.path.getsize(mp3) > 0
 print("=== PIPELINE RESULT ===")
+print("advisory :", advisory.language, "-", advisory.advisory_text[:40], "...")
 print("mp3 path :", mp3)
 print("size     :", (os.path.getsize(mp3) if (mp3 and os.path.exists(mp3)) else 0), "bytes")
 print("RESULT:", "PASS - produced an audio advisory end-to-end" if ok else "FAIL")

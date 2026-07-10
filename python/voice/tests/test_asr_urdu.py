@@ -37,10 +37,11 @@ def _clip():
 
 audio, fname, expected = _clip()
 print(f"[transcribing {fname} ({len(audio)} bytes) with faster-whisper — first run downloads the model]")
-out = asyncio.run(transcribe(audio, fname))
+out, detected = asyncio.run(transcribe(audio, fname))
 has_urdu = any("؀" <= ch <= "ۿ" for ch in out)
 if expected:
     print("INPUT (Urdu) :", expected)
 print("OUTPUT        :", out)
+print("ASR LANG      :", detected)
 print("HAS_URDU_SCRIPT:", has_urdu)
 print("RESULT:", "PASS - returned Urdu script" if (out and has_urdu) else "CHECK - inspect output above")
