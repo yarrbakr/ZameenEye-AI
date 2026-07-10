@@ -1,0 +1,21 @@
+# ZameenEye TS backend (Express + TypeORM). This repo runs via ts-node (no build step),
+# so the image installs full deps (ts-node/typescript are needed at runtime) and runs
+# src/server.ts directly.
+FROM node:20-bookworm-slim
+WORKDIR /app
+
+# Install deps first for layer caching. npm ci needs devDependencies (ts-node, typescript,
+# @types) since we execute TypeScript directly — do NOT pass --omit=dev.
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# App source
+COPY tsconfig.json ./
+COPY src ./src
+
+ENV NODE_ENV=production
+EXPOSE 3000
+
+# server.ts loads the root .env (injected via env_file at runtime), connects to Supabase
+# (external), then listens on $PORT (default 3000).
+CMD ["npx", "ts-node", "src/server.ts"]

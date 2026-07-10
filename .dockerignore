@@ -1,0 +1,30 @@
+# VCS / IDE
+.git
+.gitignore
+.claude
+
+# Node
+node_modules
+dist
+
+# Python envs / caches
+.venv
+venv
+**/__pycache__
+*.pyc
+
+# CV lane: big dataset + weights + training/segmentation outputs (NOT part of the app image)
+python/cv/Wildfire-1
+*.pt
+runs/
+python/runs/
+cv_out/
+
+# generated audio replies + runtime-generated yaml
+advisory_*.mp3
+python/data.local.yaml
+
+# secrets & docs — .env is injected via env_file at runtime, never copied into the image
+.env
+documents/
+*.md

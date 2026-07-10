@@ -1,0 +1,28 @@
+# ZameenEye voice service: FastAPI webhook + faster-whisper ASR (CTranslate2) + gTTS.
+# CPU-only and torch-free, so the image stays lean (the CV/torch lane is separate).
+FROM python:3.11-slim
+WORKDIR /app
+
+# ffmpeg: robust audio decode for faster-whisper (WhatsApp voice notes are ogg/opus).
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends ffmpeg \
+ && rm -rf /var/lib/apt/lists/*
+
+# Deps first for layer caching. Longer timeout + retries because faster-whisper's wheels
+# (ctranslate2 / onnxruntime / av) are large and can stall on a slow connection.
+COPY python/requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir --upgrade pip \
+ && pip install --no-cache-dir --timeout 180 --retries 6 -r requirements.txt
+
+# Python package tree (voice/, inference/, tts/, prompts/, ...). .dockerignore keeps the
+# CV dataset + weights out so the image stays small.
+COPY python ./python
+
+# Run from python/ so the `voice.` / `inference.` / `tts.` imports resolve.
+WORKDIR /app/python
+ENV PYTHONUNBUFFERED=1
+EXPOSE 8000
+
+# faster-whisper downloads its model from Hugging Face on the first ASR call (set
+# WHISPER_MODEL via env; default is small/base per the app).
+CMD ["uvicorn", "voice.main:app", "--host", "0.0.0.0", "--port", "8000"]

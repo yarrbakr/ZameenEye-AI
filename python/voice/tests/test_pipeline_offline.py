@@ -68,7 +68,7 @@ class _Client:
 
 pl.resolve_land_id = lambda phone: "land-uuid-123"       # stub the seed-landId lookup
 pl.httpx = types.SimpleNamespace(AsyncClient=_Client)     # stub Kai's live /spatial-check
-pl.generate_advisory = lambda payload: canned            # stub the Day-5 Fireworks call
+pl.generate_advisory = lambda payload, text="": canned   # stub the Fireworks call (payload, transcript)
 
 print("[2] running the real pipeline.run() with those three stubbed ...")
 mp3 = asyncio.run(pl.run("923001234567", "میری فصل کو آگ کا خطرہ ہے"))
