@@ -9,6 +9,22 @@ ZameenEye-AI is a hybrid intelligence platform that translates complex orbital s
 
 > Catchphrase: Turning satellite intelligence into grounded action.
 
+## Table of Contents
+
+- [Why ZameenEye-AI Exists](#why-zameeneye-ai-exists)
+- [What This Project Does in One Minute](#what-this-project-does-in-one-minute)
+- [Architecture Overview](#architecture-overview)
+- [Repository Structure](#repository-structure)
+- [Core Features](#core-features)
+- [Recent Enhancements](#recent-enhancements)
+- [API Endpoints](#api-endpoints)
+- [Prerequisites](#prerequisites)
+- [Setup Instructions](#setup-instructions)
+- [Quick Local Test Checklist](#quick-local-test-checklist)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Why ZameenEye-AI Exists
 
 Modern satellite and hazard datasets are rich in signal but difficult to operationalize. ZameenEye-AI closes that gap by combining:
@@ -18,6 +34,27 @@ Modern satellite and hazard datasets are rich in signal but difficult to operati
 - PostgreSQL-backed storage for spatial and operational data
 
 The result is a production-ready foundation for services such as wildfire/thermal anomaly monitoring, spatial hazard checks, and downstream alerting or automation pipelines.
+
+## What This Project Does in One Minute
+
+In simple terms, ZameenEye-AI takes environmental and satellite-derived signals, processes them through an AI layer, and turns them into usable alerts and backend actions. It is designed for situations where fast, localized, and multilingual communication matters most.
+
+If you are new to the project, think of it as three connected layers:
+
+1. Data intake: collects hazard-related information from sources such as NASA FIRMS.
+2. Intelligence layer: normalizes and interprets that data using Python-based processing and LLM inference.
+3. Delivery layer: exposes the results through an API and prepares them for alerts, voice delivery, or downstream automation.
+
+## Architecture Overview
+
+ZameenEye-AI follows a layered architecture designed for clarity, extensibility, and reliable operation:
+
+- Ingestion layer: Python-based scripts collect and store hazard data from external sources.
+- Intelligence layer: normalization, validation, multilingual rendering, and LLM-assisted reasoning transform raw signals into structured output.
+- Application layer: a TypeScript/Node.js backend exposes API endpoints and persists operational data in PostgreSQL through TypeORM.
+- Delivery layer: the platform prepares data for downstream alerts, voice delivery, and future automation workflows.
+
+This design makes it easier to evolve the system without tightly coupling data collection, inference, and user-facing services.
 
 ## Repository Structure
 
@@ -50,11 +87,20 @@ ZameenEye-AI/
 
 ## Core Features
 
+- Multi-language alert delivery: High-fidelity audio synthesis supports Urdu (ur), Hindi (hi), Swahili (sw), Tamil (ta), and English (en) so critical alerts can reach local operators and communities clearly and quickly.
+- Low-latency LLM inference: The system uses Fireworks AI to process structured geospatial and hazard data rapidly, turning complex anomalies into actionable insights in near real time.
+- Deterministic hazard routing: Strict schema validation is applied at the boundary layer for hazard types such as fire, flood, storm, and disease, helping prevent hallucinated outputs and ensuring reliable backend routing.
 - NASA FIRMS wildfire and thermal anomaly ingestion
 - Spatial hazard verification for geographic coordinates and land assets
 - PostgreSQL-based persistence for entities such as tenants, users, land, and disaster events
 - Python-based normalization and inference modules for downstream intelligence workflows
 - Text-to-speech preparation and prompt orchestration support
+
+## Recent Enhancements
+
+- Added a multilingual voice and alerting layer through the Python TTS workflow.
+- Added LLM-driven inference support through the Python inference layer.
+- Strengthened output reliability with schema-based validation for hazard-specific routing.
 
 ## API Endpoints
 
@@ -172,6 +218,28 @@ The API will be available at:
 ```text
 http://localhost:3000
 ```
+
+## Quick Local Test Checklist
+
+Use this checklist to verify that the project is working locally:
+
+- [ ] PostgreSQL is running and the database `zameeneye` exists
+- [ ] The `.env` file contains a valid `DATABASE_URL`
+- [ ] `npm install` completes successfully
+- [ ] `npm run migration:run` completes without database errors
+- [ ] `npm run dev` starts the backend server
+- [ ] `http://localhost:3000/health` returns a healthy response
+- [ ] The Python environment is created and dependencies are installed
+- [ ] `python ingestion/firms_fetch.py` starts the ingestion workflow
+
+## Troubleshooting
+
+If you run into issues while setting up or running the project, these are the most common fixes:
+
+- Database connection errors: confirm that PostgreSQL is running, the database exists, and the `DATABASE_URL` in the `.env` file is correct.
+- Migration failures: verify the database username, password, host, and port, then rerun `npm run migration:run`.
+- Python environment errors: make sure the virtual environment is activated and that dependencies are installed with `pip install -r requirements.txt`.
+- FIRMS ingestion issues: set `FIRMS_MAP_KEY` for live requests before running the ingestion script.
 
 ## Development Notes
 
