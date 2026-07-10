@@ -1,0 +1,848 @@
+[
+  {
+    "id": "KE-43",
+    "regionName": "Turkana",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 92,
+    "activeAlert": true,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Severe drought in Turkana: acute water shortage, failed planting season and livestock losses reported.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-25",
+      "KE-24",
+      "KE-46",
+      "KE-07"
+    ]
+  },
+  {
+    "id": "KE-25",
+    "regionName": "Marsabit",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 83,
+    "activeAlert": true,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Severe drought in Marsabit: acute water shortage, failed planting season and livestock losses reported.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-24",
+      "KE-46",
+      "KE-07"
+    ]
+  },
+  {
+    "id": "KE-24",
+    "regionName": "Mandera",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 78,
+    "activeAlert": true,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Severe drought in Mandera: acute water shortage, failed planting season and livestock losses reported.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-46",
+      "KE-07"
+    ]
+  },
+  {
+    "id": "KE-46",
+    "regionName": "Wajir",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 74,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Wajir is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-24",
+      "KE-07"
+    ]
+  },
+  {
+    "id": "KE-47",
+    "regionName": "West Pokot",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 42,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Early signs of erosion and declining organic matter are appearing in parts of West Pokot.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-22",
+      "KE-31"
+    ]
+  },
+  {
+    "id": "KE-37",
+    "regionName": "Samburu",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 9,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Samburu has adequate soil moisture this cycle; reservoirs are near seasonal average.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-24",
+      "KE-46"
+    ]
+  },
+  {
+    "id": "KE-09",
+    "regionName": "Isiolo",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 12,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "River levels across Isiolo sit within their normal channel; no flood signal.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-15"
+    ]
+  },
+  {
+    "id": "KE-01",
+    "regionName": "Baringo",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 57,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Baringo are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-15",
+      "KE-03"
+    ]
+  },
+  {
+    "id": "KE-05",
+    "regionName": "Elgeyo-Marakwet",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 5,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Fuel moisture across Elgeyo-Marakwet is healthy; wildfire potential is low.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-13",
+      "KE-32",
+      "KE-12",
+      "KE-33"
+    ]
+  },
+  {
+    "id": "KE-42",
+    "regionName": "Trans Nzoia",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 65,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Trans Nzoia is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-24",
+      "KE-46"
+    ]
+  },
+  {
+    "id": "KE-03",
+    "regionName": "Bungoma",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 36,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Upstream rainfall is raising river gauges in Bungoma; low-lying wards under a flood watch.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-15"
+    ]
+  },
+  {
+    "id": "KE-07",
+    "regionName": "Garissa",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 69,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Garissa is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-24",
+      "KE-46"
+    ]
+  },
+  {
+    "id": "KE-44",
+    "regionName": "Uasin Gishu",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 19,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "River levels across Uasin Gishu sit within their normal channel; no flood signal.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-15"
+    ]
+  },
+  {
+    "id": "KE-11",
+    "regionName": "Kakamega",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 38,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Dry vegetation and rising temperatures put Kakamega on an elevated fire watch.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-13",
+      "KE-32",
+      "KE-12",
+      "KE-33"
+    ]
+  },
+  {
+    "id": "KE-20",
+    "regionName": "Laikipia",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 8,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "River levels across Laikipia sit within their normal channel; no flood signal.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-15"
+    ]
+  },
+  {
+    "id": "KE-04",
+    "regionName": "Busia",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 20,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "River levels across Busia sit within their normal channel; no flood signal.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-15"
+    ]
+  },
+  {
+    "id": "KE-26",
+    "regionName": "Meru",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 32,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Upstream rainfall is raising river gauges in Meru; low-lying wards under a flood watch.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-15"
+    ]
+  },
+  {
+    "id": "KE-32",
+    "regionName": "Nandi",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 56,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Hot, dry, windy conditions across Nandi raise the risk of fast-spreading vegetation fires.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-13",
+      "KE-12",
+      "KE-33",
+      "KE-35"
+    ]
+  },
+  {
+    "id": "KE-38",
+    "regionName": "Siaya",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 3,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Siaya has adequate soil moisture this cycle; reservoirs are near seasonal average.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-24",
+      "KE-46"
+    ]
+  },
+  {
+    "id": "KE-31",
+    "regionName": "Nakuru",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 31,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Early signs of erosion and declining organic matter are appearing in parts of Nakuru.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-47",
+      "KE-22"
+    ]
+  },
+  {
+    "id": "KE-45",
+    "regionName": "Vihiga",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 3,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "River levels across Vihiga sit within their normal channel; no flood signal.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-15"
+    ]
+  },
+  {
+    "id": "KE-35",
+    "regionName": "Nyandarua",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 40,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Dry vegetation and rising temperatures put Nyandarua on an elevated fire watch.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-13",
+      "KE-32",
+      "KE-12",
+      "KE-33"
+    ]
+  },
+  {
+    "id": "KE-41",
+    "regionName": "Tharaka",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 11,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Soil structure and vegetative cover across Tharaka remain stable.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-47",
+      "KE-22"
+    ]
+  },
+  {
+    "id": "KE-12",
+    "regionName": "Kericho",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 53,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Hot, dry, windy conditions across Kericho raise the risk of fast-spreading vegetation fires.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-13",
+      "KE-32",
+      "KE-33",
+      "KE-35"
+    ]
+  },
+  {
+    "id": "KE-17",
+    "regionName": "Kisumu",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 6,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Soil structure and vegetative cover across Kisumu remain stable.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-47",
+      "KE-22"
+    ]
+  },
+  {
+    "id": "KE-36",
+    "regionName": "Nyeri",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 63,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Nyeri is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-24",
+      "KE-46"
+    ]
+  },
+  {
+    "id": "KE-40",
+    "regionName": "Tana River",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 66,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Tana River are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-21",
+      "KE-01",
+      "KE-15",
+      "KE-03"
+    ]
+  },
+  {
+    "id": "KE-18",
+    "regionName": "Kitui",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 45,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rainfall in Kitui is trailing the seasonal norm — early-warning watch for pasture and water stress.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-24",
+      "KE-46"
+    ]
+  },
+  {
+    "id": "KE-15",
+    "regionName": "Kirinyaga",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 45,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Upstream rainfall is raising river gauges in Kirinyaga; low-lying wards under a flood watch.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-03"
+    ]
+  },
+  {
+    "id": "KE-06",
+    "regionName": "Embu",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 59,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Embu is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-24",
+      "KE-46"
+    ]
+  },
+  {
+    "id": "KE-08",
+    "regionName": "Homa Bay",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 28,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Upstream rainfall is raising river gauges in Homa Bay; low-lying wards under a flood watch.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-15"
+    ]
+  },
+  {
+    "id": "KE-02",
+    "regionName": "Bomet",
+    "country": "kenya",
+    "riskType": "drought",
+    "severity": 52,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Bomet is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "Onyo la ukame: Hifadhi maji, punguza umwagiliaji na weka akiba ya maji kwa mifugo.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-43",
+      "KE-25",
+      "KE-24",
+      "KE-46"
+    ]
+  },
+  {
+    "id": "KE-34",
+    "regionName": "Nyamira",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 25,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Early signs of erosion and declining organic matter are appearing in parts of Nyamira.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-47",
+      "KE-22"
+    ]
+  },
+  {
+    "id": "KE-33",
+    "regionName": "Narok",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 48,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Dry vegetation and rising temperatures put Narok on an elevated fire watch.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-13",
+      "KE-32",
+      "KE-12",
+      "KE-35"
+    ]
+  },
+  {
+    "id": "KE-16",
+    "regionName": "Kisii",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 61,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Land degradation in Kisii is reducing arable capacity through erosion and salinity.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-19",
+      "KE-47",
+      "KE-22",
+      "KE-31"
+    ]
+  },
+  {
+    "id": "KE-29",
+    "regionName": "Murang'a",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 7,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Fuel moisture across Murang'a is healthy; wildfire potential is low.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-13",
+      "KE-32",
+      "KE-12",
+      "KE-33"
+    ]
+  },
+  {
+    "id": "KE-27",
+    "regionName": "Migori",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 17,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Fuel moisture across Migori is healthy; wildfire potential is low.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-13",
+      "KE-32",
+      "KE-12",
+      "KE-33"
+    ]
+  },
+  {
+    "id": "KE-13",
+    "regionName": "Kiambu",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 69,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Hot, dry, windy conditions across Kiambu raise the risk of fast-spreading vegetation fires.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-32",
+      "KE-12",
+      "KE-33",
+      "KE-35"
+    ]
+  },
+  {
+    "id": "KE-22",
+    "regionName": "Machakos",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 40,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Early signs of erosion and declining organic matter are appearing in parts of Machakos.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-47",
+      "KE-31"
+    ]
+  },
+  {
+    "id": "KE-10",
+    "regionName": "Kajiado",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 22,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Soil structure and vegetative cover across Kajiado remain stable.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-47",
+      "KE-22"
+    ]
+  },
+  {
+    "id": "KE-30",
+    "regionName": "Nairobi",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 28,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Early signs of erosion and declining organic matter are appearing in parts of Nairobi.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-47",
+      "KE-22"
+    ]
+  },
+  {
+    "id": "KE-23",
+    "regionName": "Makueni",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 24,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Soil structure and vegetative cover across Makueni remain stable.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-47",
+      "KE-22"
+    ]
+  },
+  {
+    "id": "KE-21",
+    "regionName": "Lamu",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 63,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Lamu are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-01",
+      "KE-15",
+      "KE-03"
+    ]
+  },
+  {
+    "id": "KE-14",
+    "regionName": "Kilifi",
+    "country": "kenya",
+    "riskType": "flood",
+    "severity": 36,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Upstream rainfall is raising river gauges in Kilifi; low-lying wards under a flood watch.",
+    "advisoryScript": "Hatari ya mafuriko: Epuka maeneo ya chini na andaa vifaa vya dharura.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-40",
+      "KE-21",
+      "KE-01",
+      "KE-15"
+    ]
+  },
+  {
+    "id": "KE-39",
+    "regionName": "Taita Taveta",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 18,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Soil structure and vegetative cover across Taita Taveta remain stable.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-19",
+      "KE-47",
+      "KE-22"
+    ]
+  },
+  {
+    "id": "KE-19",
+    "regionName": "Kwale",
+    "country": "kenya",
+    "riskType": "soil-degradation",
+    "severity": 52,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Land degradation in Kwale is reducing arable capacity through erosion and salinity.",
+    "advisoryScript": "Uharibifu wa udongo: Panda miti na tumia mzunguko wa mazao kurudisha rutuba ya ardhi.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-16",
+      "KE-47",
+      "KE-22",
+      "KE-31"
+    ]
+  },
+  {
+    "id": "KE-28",
+    "regionName": "Mombasa",
+    "country": "kenya",
+    "riskType": "fire",
+    "severity": 23,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Fuel moisture across Mombasa is healthy; wildfire potential is low.",
+    "advisoryScript": "Hatari ya moto: Epuka moto wazi na kuwa mwangalifu karibu na nyasi kavu.",
+    "advisoryLanguage": "sw",
+    "relatedRegionIds": [
+      "KE-13",
+      "KE-32",
+      "KE-12",
+      "KE-33"
+    ]
+  }
+]

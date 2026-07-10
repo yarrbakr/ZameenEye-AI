@@ -1,0 +1,109 @@
+[
+  {
+    "id": "PK-BA",
+    "regionName": "Balochistan",
+    "country": "pakistan",
+    "riskType": "drought",
+    "severity": 79,
+    "activeAlert": true,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Severe drought in Balochistan: acute water shortage, failed planting season and livestock losses reported.",
+    "advisoryScript": "خشک سالی کی وارننگ: پانی کا ذخیرہ کریں، فصلوں کی آبپاشی محدود کریں اور مویشیوں کے لیے پانی محفوظ رکھیں۔",
+    "advisoryLanguage": "ur",
+    "relatedRegionIds": []
+  },
+  {
+    "id": "PK-SD",
+    "regionName": "Sindh",
+    "country": "pakistan",
+    "riskType": "flood",
+    "severity": 88,
+    "activeAlert": true,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Major flooding in Sindh: riverine and flash flooding displacing communities and cutting road access.",
+    "advisoryScript": "سیلاب کا خطرہ: نشیبی علاقوں سے دور رہیں اور ہنگامی سامان تیار رکھیں۔",
+    "advisoryLanguage": "ur",
+    "relatedRegionIds": [
+      "PK-KP",
+      "PK-PB",
+      "PK-GB"
+    ]
+  },
+  {
+    "id": "PK-GB",
+    "regionName": "Gilgit-Baltistan",
+    "country": "pakistan",
+    "riskType": "flood",
+    "severity": 58,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Gilgit-Baltistan are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "سیلاب کا خطرہ: نشیبی علاقوں سے دور رہیں اور ہنگامی سامان تیار رکھیں۔",
+    "advisoryLanguage": "ur",
+    "relatedRegionIds": [
+      "PK-SD",
+      "PK-KP",
+      "PK-PB"
+    ]
+  },
+  {
+    "id": "PK-JK",
+    "regionName": "Azad Kashmir",
+    "country": "pakistan",
+    "riskType": "soil-degradation",
+    "severity": 41,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Early signs of erosion and declining organic matter are appearing in parts of Azad Kashmir.",
+    "advisoryScript": "زمینی کٹاؤ: زمین کی زرخیزی بحال کرنے کے لیے درخت لگائیں اور فصل کی گردش اپنائیں۔",
+    "advisoryLanguage": "ur",
+    "relatedRegionIds": []
+  },
+  {
+    "id": "PK-KP",
+    "regionName": "Khyber Pakhtunkhwa",
+    "country": "pakistan",
+    "riskType": "flood",
+    "severity": 71,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Khyber Pakhtunkhwa are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "سیلاب کا خطرہ: نشیبی علاقوں سے دور رہیں اور ہنگامی سامان تیار رکھیں۔",
+    "advisoryLanguage": "ur",
+    "relatedRegionIds": [
+      "PK-SD",
+      "PK-PB",
+      "PK-GB"
+    ]
+  },
+  {
+    "id": "PK-PB",
+    "regionName": "Punjab",
+    "country": "pakistan",
+    "riskType": "flood",
+    "severity": 64,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Punjab are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "سیلاب کا خطرہ: نشیبی علاقوں سے دور رہیں اور ہنگامی سامان تیار رکھیں۔",
+    "advisoryLanguage": "ur",
+    "relatedRegionIds": [
+      "PK-SD",
+      "PK-KP",
+      "PK-GB"
+    ]
+  },
+  {
+    "id": "PK-IS",
+    "regionName": "Islamabad Capital Territory",
+    "country": "pakistan",
+    "riskType": "fire",
+    "severity": 22,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Fuel moisture across Islamabad Capital Territory is healthy; wildfire potential is low.",
+    "advisoryScript": "آگ کا خطرہ: کھلی آگ سے گریز کریں اور خشک گھاس کے قریب احتیاط کریں۔",
+    "advisoryLanguage": "ur",
+    "relatedRegionIds": []
+  }
+]

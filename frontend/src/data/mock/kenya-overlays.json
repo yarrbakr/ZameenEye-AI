@@ -1,0 +1,32 @@
+{
+  "fire": [
+    { "id": "ke-fire-1", "lat": -1.5, "lng": 35.5, "intensity": 66 },
+    { "id": "ke-fire-2", "lat": -2.7, "lng": 38.5, "intensity": 52 },
+    { "id": "ke-fire-3", "lat": 0.5, "lng": 37.5, "intensity": 40 }
+  ],
+  "flood": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": { "name": "Tana River flood extent" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [[40.0, -0.9], [40.4, -1.1], [40.6, -1.8], [40.2, -2.3], [39.9, -2.0], [39.8, -1.3], [40.0, -0.9]]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "Lake Baringo rising extent" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [[36.0, 0.75], [36.12, 0.7], [36.15, 0.45], [36.02, 0.4], [35.95, 0.55], [36.0, 0.75]]
+          ]
+        }
+      }
+    ]
+  }
+}

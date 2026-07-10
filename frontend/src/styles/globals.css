@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #070910;
+  color: #e8e8ee;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* Ambient radial glow behind the map. Dimmed further under critical regions via
+   an overlay element in MapCanvas. */
+.ambient-glow {
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 42%,
+    rgba(58, 124, 224, 0.10),
+    rgba(7, 9, 16, 0) 70%
+  );
+}
+
+/* Glass panel surface used by InfoPanel, Legend, Layer toggles. */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* Skeleton shimmer for the map loading overlay. */
+.shimmer-bar {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.06),
+    transparent
+  );
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Region path base — transitions are kept short; overridden for reduced motion. */
+.region-path {
+  cursor: pointer;
+  transition: fill 200ms ease, opacity 200ms ease, transform 220ms ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.region-path:focus {
+  outline: none;
+}
+.region-path:focus-visible {
+  stroke: #e8e8ee;
+  stroke-width: 1.6;
+}
+
+/* District fills carry 700+ nodes, so hover lift is pure CSS (no React re-render). */
+.district-path {
+  transition: fill 200ms ease, fill-opacity 200ms ease, transform 160ms ease,
+    stroke 160ms ease;
+}
+.district-path:hover {
+  transform: scale(1.09);
+  stroke: #e8e8ee;
+  stroke-width: 0.8;
+}
+
+/* Faint ADM1 outlines drawn over the district layer for orientation. */
+.admin-outline {
+  fill: none;
+  stroke: rgba(232, 232, 238, 0.28);
+  stroke-width: 0.9;
+  pointer-events: none;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Visible focus ring for interactive controls. */
+.focusable:focus-visible {
+  outline: 2px solid #3a7ce0;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbars inside panels. */
+.panel-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.panel-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important;
+  }
+}

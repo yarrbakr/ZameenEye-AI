@@ -1,0 +1,650 @@
+[
+  {
+    "id": "IN-PY",
+    "regionName": "Puducherry",
+    "country": "india",
+    "riskType": "soil-degradation",
+    "severity": 21,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Soil structure and vegetative cover across Puducherry remain stable.",
+    "advisoryScript": "मृदा क्षरण: भूमि की उर्वरता बहाल करने हेतु वृक्षारोपण करें और फसल चक्र अपनाएँ।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-HR",
+      "IN-CT",
+      "IN-PB",
+      "IN-AP"
+    ]
+  },
+  {
+    "id": "IN-MH",
+    "regionName": "Mahārāshtra",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 68,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Mahārāshtra is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-DL",
+      "IN-UP",
+      "IN-KA"
+    ]
+  },
+  {
+    "id": "IN-NL",
+    "regionName": "Nāgāland",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 9,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Nāgāland has adequate soil moisture this cycle; reservoirs are near seasonal average.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-LD",
+    "regionName": "Lakshadweep",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 21,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Lakshadweep has adequate soil moisture this cycle; reservoirs are near seasonal average.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-UP",
+    "regionName": "Uttar Pradesh",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 61,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Uttar Pradesh is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-KA"
+    ]
+  },
+  {
+    "id": "IN-TN",
+    "regionName": "Tamil Nādu",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 38,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rainfall in Tamil Nādu is trailing the seasonal norm — early-warning watch for pasture and water stress.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-CT",
+    "regionName": "Chhattīsgarh",
+    "country": "india",
+    "riskType": "soil-degradation",
+    "severity": 50,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Land degradation in Chhattīsgarh is reducing arable capacity through erosion and salinity.",
+    "advisoryScript": "मृदा क्षरण: भूमि की उर्वरता बहाल करने हेतु वृक्षारोपण करें और फसल चक्र अपनाएँ।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-HR",
+      "IN-PB",
+      "IN-AP",
+      "IN-TR"
+    ]
+  },
+  {
+    "id": "IN-GJ",
+    "regionName": "Gujarāt",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 33,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rainfall in Gujarāt is trailing the seasonal norm — early-warning watch for pasture and water stress.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-DL",
+    "regionName": "Delhi",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 63,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Delhi is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-UP",
+      "IN-KA"
+    ]
+  },
+  {
+    "id": "IN-SK",
+    "regionName": "Sikkim",
+    "country": "india",
+    "riskType": "flood",
+    "severity": 1,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "River levels across Sikkim sit within their normal channel; no flood signal.",
+    "advisoryScript": "बाढ़ का खतरा: निचले इलाकों से दूर रहें और आपातकालीन सामग्री तैयार रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-AS",
+      "IN-BR",
+      "IN-JH",
+      "IN-KL"
+    ]
+  },
+  {
+    "id": "IN-TR",
+    "regionName": "Tripura",
+    "country": "india",
+    "riskType": "soil-degradation",
+    "severity": 31,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Early signs of erosion and declining organic matter are appearing in parts of Tripura.",
+    "advisoryScript": "मृदा क्षरण: भूमि की उर्वरता बहाल करने हेतु वृक्षारोपण करें और फसल चक्र अपनाएँ।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-HR",
+      "IN-CT",
+      "IN-PB",
+      "IN-AP"
+    ]
+  },
+  {
+    "id": "IN-WB",
+    "regionName": "West Bengal",
+    "country": "india",
+    "riskType": "fire",
+    "severity": 0,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Fuel moisture across West Bengal is healthy; wildfire potential is low.",
+    "advisoryScript": "आग का खतरा: खुली आग से बचें और सूखी घास के पास सावधानी बरतें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-UT",
+      "IN-GA",
+      "IN-LA",
+      "IN-MZ"
+    ]
+  },
+  {
+    "id": "IN-OR",
+    "regionName": "Odisha",
+    "country": "india",
+    "riskType": "flood",
+    "severity": 55,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Odisha are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "बाढ़ का खतरा: निचले इलाकों से दूर रहें और आपातकालीन सामग्री तैयार रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-AS",
+      "IN-BR",
+      "IN-JH",
+      "IN-KL"
+    ]
+  },
+  {
+    "id": "IN-BR",
+    "regionName": "Bihār",
+    "country": "india",
+    "riskType": "flood",
+    "severity": 76,
+    "activeAlert": true,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Major flooding in Bihār: riverine and flash flooding displacing communities and cutting road access.",
+    "advisoryScript": "बाढ़ का खतरा: निचले इलाकों से दूर रहें और आपातकालीन सामग्री तैयार रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-AS",
+      "IN-JH",
+      "IN-KL",
+      "IN-OR"
+    ]
+  },
+  {
+    "id": "IN-LA",
+    "regionName": "Ladākh",
+    "country": "india",
+    "riskType": "fire",
+    "severity": 44,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Dry vegetation and rising temperatures put Ladākh on an elevated fire watch.",
+    "advisoryScript": "आग का खतरा: खुली आग से बचें और सूखी घास के पास सावधानी बरतें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-UT",
+      "IN-GA",
+      "IN-MZ",
+      "IN-TG"
+    ]
+  },
+  {
+    "id": "IN-RJ",
+    "regionName": "Rājasthān",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 81,
+    "activeAlert": true,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Severe drought in Rājasthān: acute water shortage, failed planting season and livestock losses reported.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-MH",
+      "IN-DL",
+      "IN-UP",
+      "IN-KA"
+    ]
+  },
+  {
+    "id": "IN-TG",
+    "regionName": "Telangāna",
+    "country": "india",
+    "riskType": "fire",
+    "severity": 10,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Fuel moisture across Telangāna is healthy; wildfire potential is low.",
+    "advisoryScript": "आग का खतरा: खुली आग से बचें और सूखी घास के पास सावधानी बरतें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-UT",
+      "IN-GA",
+      "IN-LA",
+      "IN-MZ"
+    ]
+  },
+  {
+    "id": "IN-AP",
+    "regionName": "Andhra Pradesh",
+    "country": "india",
+    "riskType": "soil-degradation",
+    "severity": 40,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Early signs of erosion and declining organic matter are appearing in parts of Andhra Pradesh.",
+    "advisoryScript": "मृदा क्षरण: भूमि की उर्वरता बहाल करने हेतु वृक्षारोपण करें और फसल चक्र अपनाएँ।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-HR",
+      "IN-CT",
+      "IN-PB",
+      "IN-TR"
+    ]
+  },
+  {
+    "id": "IN-MZ",
+    "regionName": "Mizoram",
+    "country": "india",
+    "riskType": "fire",
+    "severity": 14,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Fuel moisture across Mizoram is healthy; wildfire potential is low.",
+    "advisoryScript": "आग का खतरा: खुली आग से बचें और सूखी घास के पास सावधानी बरतें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-UT",
+      "IN-GA",
+      "IN-LA",
+      "IN-TG"
+    ]
+  },
+  {
+    "id": "IN-AR",
+    "regionName": "Arunāchal Pradesh",
+    "country": "india",
+    "riskType": "soil-degradation",
+    "severity": 8,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Soil structure and vegetative cover across Arunāchal Pradesh remain stable.",
+    "advisoryScript": "मृदा क्षरण: भूमि की उर्वरता बहाल करने हेतु वृक्षारोपण करें और फसल चक्र अपनाएँ।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-HR",
+      "IN-CT",
+      "IN-PB",
+      "IN-AP"
+    ]
+  },
+  {
+    "id": "IN-ML",
+    "regionName": "Meghālaya",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 9,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Meghālaya has adequate soil moisture this cycle; reservoirs are near seasonal average.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-JH",
+    "regionName": "Jhārkhand",
+    "country": "india",
+    "riskType": "flood",
+    "severity": 66,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Jhārkhand are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "बाढ़ का खतरा: निचले इलाकों से दूर रहें और आपातकालीन सामग्री तैयार रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-AS",
+      "IN-BR",
+      "IN-KL",
+      "IN-OR"
+    ]
+  },
+  {
+    "id": "IN-AS",
+    "regionName": "Assam",
+    "country": "india",
+    "riskType": "flood",
+    "severity": 90,
+    "activeAlert": true,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Major flooding in Assam: riverine and flash flooding displacing communities and cutting road access.",
+    "advisoryScript": "बाढ़ का खतरा: निचले इलाकों से दूर रहें और आपातकालीन सामग्री तैयार रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-BR",
+      "IN-JH",
+      "IN-KL",
+      "IN-OR"
+    ]
+  },
+  {
+    "id": "IN-MN",
+    "regionName": "Manipur",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 47,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rainfall in Manipur is trailing the seasonal norm — early-warning watch for pasture and water stress.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-KA",
+    "regionName": "Karnātaka",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 52,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Prolonged dry spell across Karnātaka is drawing down reservoirs and stressing rain-fed crops.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-UT",
+    "regionName": "Uttarākhand",
+    "country": "india",
+    "riskType": "fire",
+    "severity": 71,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Hot, dry, windy conditions across Uttarākhand raise the risk of fast-spreading vegetation fires.",
+    "advisoryScript": "आग का खतरा: खुली आग से बचें और सूखी घास के पास सावधानी बरतें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-GA",
+      "IN-LA",
+      "IN-MZ",
+      "IN-TG"
+    ]
+  },
+  {
+    "id": "IN-DH",
+    "regionName": "Dādra and Nagar Haveli and Damān and Diu",
+    "country": "india",
+    "riskType": "flood",
+    "severity": 0,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "River levels across Dādra and Nagar Haveli and Damān and Diu sit within their normal channel; no flood signal.",
+    "advisoryScript": "बाढ़ का खतरा: निचले इलाकों से दूर रहें और आपातकालीन सामग्री तैयार रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-AS",
+      "IN-BR",
+      "IN-JH",
+      "IN-KL"
+    ]
+  },
+  {
+    "id": "IN-MP",
+    "regionName": "Madhya Pradesh",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 47,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rainfall in Madhya Pradesh is trailing the seasonal norm — early-warning watch for pasture and water stress.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-GA",
+    "regionName": "Goa",
+    "country": "india",
+    "riskType": "fire",
+    "severity": 62,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Hot, dry, windy conditions across Goa raise the risk of fast-spreading vegetation fires.",
+    "advisoryScript": "आग का खतरा: खुली आग से बचें और सूखी घास के पास सावधानी बरतें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-UT",
+      "IN-LA",
+      "IN-MZ",
+      "IN-TG"
+    ]
+  },
+  {
+    "id": "IN-KL",
+    "regionName": "Kerala",
+    "country": "india",
+    "riskType": "flood",
+    "severity": 62,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Kerala are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "बाढ़ का खतरा: निचले इलाकों से दूर रहें और आपातकालीन सामग्री तैयार रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-AS",
+      "IN-BR",
+      "IN-JH",
+      "IN-OR"
+    ]
+  },
+  {
+    "id": "IN-CH",
+    "regionName": "Chandīgarh",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 2,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Chandīgarh has adequate soil moisture this cycle; reservoirs are near seasonal average.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-AN",
+    "regionName": "Andaman and Nicobar Islands",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 30,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rainfall in Andaman and Nicobar Islands is trailing the seasonal norm — early-warning watch for pasture and water stress.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-HP",
+    "regionName": "Himāchal Pradesh",
+    "country": "india",
+    "riskType": "drought",
+    "severity": 33,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rainfall in Himāchal Pradesh is trailing the seasonal norm — early-warning watch for pasture and water stress.",
+    "advisoryScript": "सूखे की चेतावनी: पानी का संचय करें, सिंचाई सीमित करें और पशुओं के लिए जल सुरक्षित रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-RJ",
+      "IN-MH",
+      "IN-DL",
+      "IN-UP"
+    ]
+  },
+  {
+    "id": "IN-JK",
+    "regionName": "Jammu and Kashmīr",
+    "country": "india",
+    "riskType": "flood",
+    "severity": 50,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Rivers in Jammu and Kashmīr are near bank-full; localized inundation of farmland and roads is likely.",
+    "advisoryScript": "बाढ़ का खतरा: निचले इलाकों से दूर रहें और आपातकालीन सामग्री तैयार रखें।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-AS",
+      "IN-BR",
+      "IN-JH",
+      "IN-KL"
+    ]
+  },
+  {
+    "id": "IN-PB",
+    "regionName": "Punjab",
+    "country": "india",
+    "riskType": "soil-degradation",
+    "severity": 44,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Early signs of erosion and declining organic matter are appearing in parts of Punjab.",
+    "advisoryScript": "मृदा क्षरण: भूमि की उर्वरता बहाल करने हेतु वृक्षारोपण करें और फसल चक्र अपनाएँ।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-HR",
+      "IN-CT",
+      "IN-AP",
+      "IN-TR"
+    ]
+  },
+  {
+    "id": "IN-HR",
+    "regionName": "Haryāna",
+    "country": "india",
+    "riskType": "soil-degradation",
+    "severity": 65,
+    "activeAlert": false,
+    "lastUpdated": "2026-07-05T09:00:00Z",
+    "summary": "Land degradation in Haryāna is reducing arable capacity through erosion and salinity.",
+    "advisoryScript": "मृदा क्षरण: भूमि की उर्वरता बहाल करने हेतु वृक्षारोपण करें और फसल चक्र अपनाएँ।",
+    "advisoryLanguage": "hi",
+    "relatedRegionIds": [
+      "IN-CT",
+      "IN-PB",
+      "IN-AP",
+      "IN-TR"
+    ]
+  }
+]
