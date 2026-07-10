@@ -15,3 +15,9 @@ advisory_*.mp3
 # CV lane: model weights auto-downloaded at runtime + segmentation outputs
 *.pt
 cv_out/
+
+# YOLO training: ultralytics run outputs + the runtime-generated dataset yaml
+runs/
+python/runs/
+data.local.yaml
+python/data.local.yaml

@@ -1,10 +1,10 @@
-path: C:/Users/Kainat/ZameenEye-AI/python/cv/Wildfire-1
-
-
-
-
-test: test
+# Template only. run_yolo.py auto-generates data.local.yaml with an absolute `path:` at
+# runtime (Ultralytics resolves a relative `path:` against its own datasets dir, not this
+# file's location). To use the Ultralytics CLI directly, set `path:` to the absolute
+# location of python/cv/Wildfire-1 on your machine.
+path: ./cv/Wildfire-1
 train: train
 val: valid
+test: test
 nc: 1
-names: ['wildfire']
+names: ['smoke']
