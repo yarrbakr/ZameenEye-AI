@@ -18,7 +18,6 @@ ZameenEye-AI is a hybrid intelligence platform that translates complex orbital s
 - [Hardware & Infrastructure Optimization (AMD Track 3)](#hardware--infrastructure-optimization-amd-track-3)
 - [Repository Structure](#repository-structure)
 - [Core Features](#core-features)
-- [Recent Enhancements](#recent-enhancements)
 - [API Endpoints](#api-endpoints)
 - [Prerequisites](#prerequisites)
 - [Setup Instructions](#setup-instructions)
@@ -51,10 +50,10 @@ If you are new to the project, think of it as three connected layers:
 
 ZameenEye-AI follows a layered architecture designed for clarity, extensibility, and reliable operation:
 
-- Ingestion layer: Python-based scripts collect and store hazard data from external sources.
-- Intelligence layer: normalization, validation, multilingual rendering, and LLM-assisted reasoning transform raw signals into structured output.
-- Application layer: a TypeScript/Node.js backend exposes API endpoints and persists operational data in PostgreSQL through TypeORM.
-- Delivery layer: the platform prepares data for downstream alerts, voice delivery, and future automation workflows.
+- **Ingestion layer:** Python-based scripts collect and store hazard data from external sources (NASA FIRMS, UNOSAT, Copernicus).
+- **Intelligence layer:** normalization, validation, multilingual rendering, and LLM-assisted reasoning transform raw signals into structured output using Fireworks AI.
+- **Application layer:** a TypeScript/Node.js backend exposes API endpoints and persists operational data in PostgreSQL through TypeORM.
+- **Delivery layer:** the platform prepares data for downstream alerts, voice delivery (multilingual TTS), and future automation workflows.
 
 This design makes it easier to evolve the system without tightly coupling data collection, inference, and user-facing services.
 
@@ -70,7 +69,8 @@ ZameenEye-AI is explicitly architected to eliminate traditional CPU-bound proces
 * **Spatial Processing Integration:** Blending PostgreSQL/PostGIS spatial `GIST` geometry indexing with hardware-accelerated tensor execution matrices.
 
 ### 📊 Real-Time Telemetry & Hardware Utilization
-By completely bypassing fallback layers, our deep learning frameworks bind directly to the AMD graphics hardware. Under active execution loads (YOLOv8 deep-learning training routines and real-time inference filters), system metrics via `rocm-smi` verify complete optimization:
+By completely bypassing fallback layers, our deep learning frameworks bind directly to the AMD graphics hardware. Under active execution loads (YOLOv8 deep-learning training routines and real-time inference):
+
 * **VRAM Allocation:** Native allocation bounds targeting dedicated memory matrices.
 * **GPU Utilization Peak:** Massively parallel processing across independent hardware Compute Units.
 
@@ -85,26 +85,334 @@ By completely bypassing fallback layers, our deep learning frameworks bind direc
 
 ```text
 ZameenEye-AI/
-├── package.json
-├── tsconfig.json
-├── SETUP.md
+├── package.json                    # Node.js dependencies & scripts
+├── package-lock.json
+├── tsconfig.json                   # TypeScript config
+├── SETUP.md                        # Backend setup guide
+├── README.md                       # This file
 ├── src/
-│   ├── app.ts
-│   ├── server.ts
+│   ├── app.ts                      # Express app initialization
+│   ├── server.ts                   # Server startup & DB connection
 │   ├── config/
-│   ├── controllers/
-│   ├── entities/
-│   ├── migrations/
-│   ├── routes/
+│   │   └── database.ts             # TypeORM DataSource config
+│   ├── entities/                   # TypeORM entities
+│   │   ├── tenant.ts               # Organization/region grouping
+│   │   ├── user.ts                 # User profiles
+│   │   ├── land.ts                 # Land polygons with geospatial data
+│   │   └── disasterEvent.ts        # Hazard events from external sources
+│   ├── migrations/                 # Database migrations (numbered sequentially)
+│   ├── seeds/                      # Seed data (numbered sequentially)
 │   ├── scripts/
-│   ├── seeds/
-│   └── services/
+│   │   └── runner.ts               # Custom migration/seed runner
+│   ├── services/                   # Business logic & DB queries
+│   ├── controllers/                # Request/response handling
+│   ├── routes/                     # Express route definitions
+│   │   ├── spatial.routes.ts       # Spatial intersection checks
+│   │   └── ingestFirms.routes.ts   # FIRMS data ingestion
+│   └── README.md                   # Backend documentation
 ├── python/
+│   ├── README.md                   # Python module documentation
+│   ├── requirements.txt            # Python dependencies
 │   ├── ingestion/
-│   │   └── firms_fetch.py
+│   │   └── firms_fetch.py          # Live FIRMS data sync from NASA
 │   ├── inference/
+│   │   ├── fireworks_client.py     # LLM inference via Fireworks AI
+│   │   └── guardrails.py           # Output validation & safety checks
 │   ├── prompts/
+│   │   ├── schema.py               # Input/output contract definitions
+│   │   └── persona_templates.py    # System prompts & localization
 │   ├── tts/
-│   ├── testing/
-│   └── requirements.txt
-└── package-lock.json
+│   │   └── text_to_speech.py       # Multilingual audio generation
+│   └── testing/
+│       └── sandbox_test.py         # Full pipeline mock tests
+└── .gitignore
+```
+
+---
+
+## Core Features
+
+### 🌍 Geospatial Intelligence
+- **Spatial intersection checks** using PostGIS GIST indexing
+- **Multi-source hazard aggregation** (NASA FIRMS, UNOSAT, Copernicus)
+- **Real-time event detection** with confidence thresholds
+
+### 🤖 AI-Powered Reasoning
+- **LLM-assisted inference** via Fireworks Llama-3-70B
+- **Context-aware advisory generation** tailored to risk profiles
+- **Output guardrailing** to ensure safety and accuracy
+
+### 🌐 Multilingual Delivery
+- **5 supported languages:** Urdu, Hindi, Swahili, Tamil, English
+- **Text-to-speech synthesis** in all supported languages
+- **Localized personas** that adapt tone and urgency to risk levels
+
+### 🔐 Multi-Tenant Architecture
+- **Role-based access control** (farmer, agency_admin)
+- **Tenant isolation** with country-specific configurations
+- **User profile management** with preferred language & communication channels
+
+---
+
+## API Endpoints
+
+### `/spatial-check` (POST)
+**Checks hazards intersecting a farmer's land.**
+
+Request:
+```json
+{
+  "landId": "uuid"
+}
+```
+
+Response:
+```json
+{
+  "land": {
+    "id": "uuid",
+    "label": "Field Name",
+    "country": "Pakistan | India | Kenya"
+  },
+  "owner": {
+    "name": "John Farmer",
+    "phone_number": "+92...",
+    "role": "farmer | agency_admin",
+    "preferred_language": "urdu | hindi | swahili | tamil | english"
+  },
+  "has_active_hazard": true,
+  "intersecting_events": [
+    {
+      "source": "nasa_firms | unosat | copernicus",
+      "detected_at": "2026-07-04T10:00:00Z",
+      "raw_payload": {
+        "confidence": 85,
+        "intensity": 340
+      }
+    }
+  ]
+}
+```
+
+**Notes:**
+- Returned even when `has_active_hazard` is false (for "all clear" messages).
+- `has_active_hazard` is true only if at least one event's confidence exceeds 70%.
+- `preferred_language` may be null until user profile is complete.
+
+### `/ingest/firms` (POST)
+**Ingest and normalize FIRMS hazard data.**
+
+Request:
+```json
+{
+  "raw_firms_data": { ... }
+}
+```
+
+---
+
+## Prerequisites
+
+### System Requirements
+- **Node.js** 18+ (TypeScript backend)
+- **Python** 3.9+ (AI/inference pipeline)
+- **PostgreSQL** 13+ with PostGIS extension (geospatial data)
+- **npm** or **yarn** (Node.js package manager)
+
+### Environment Variables
+Create a `.env` file in the project root with:
+
+```bash
+# Database (use Session Pooler connection from Supabase)
+DATABASE_URL=postgresql://postgres.<project_ref>:<password>@aws-1-ap-southeast-1.pooler.supabase.com:5432/postgres
+
+# Fireworks AI (for LLM inference)
+FIREWORKS_API_KEY=your_fireworks_api_key_here
+
+# Other services (as needed)
+# Add other env vars for external APIs
+```
+
+**⚠️ Important:** Use the **Session Pooler** connection string from Supabase, not the Direct connection string. Direct defaults to IPv6, which may fail.
+
+### API Keys & Services
+- **Supabase Project** (PostgreSQL + PostGIS)
+- **Fireworks AI API key** (for LLM inference)
+- **NASA FIRMS API** (for live hazard data)
+
+---
+
+## Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yarrbakr/ZameenEye-AI.git
+cd ZameenEye-AI
+```
+
+### 2. Backend Setup (TypeScript/Node.js)
+
+```bash
+# Install Node.js dependencies
+npm install
+
+# Create .env file in project root (see Prerequisites section)
+# Ensure DATABASE_URL points to your Supabase instance
+
+# Run database migrations
+npm run migration:run
+
+# Seed initial data (optional)
+npm run seed:run
+
+# Start the backend server
+npm run dev
+# Server will start on http://localhost:3000
+```
+
+**Verification:**
+```bash
+curl http://localhost:3000/health
+# Expected: { "status": "ok" }
+```
+
+### 3. Python Setup (AI/Inference Pipeline)
+
+```bash
+# Navigate to python directory
+cd python
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate          # On Windows: venv\Scripts\activate
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Verify setup
+python -m testing.sandbox_test
+```
+
+### 4. Key Files to Configure
+- **`.env`** — Database connection & API keys
+- **`src/config/database.ts`** — TypeORM DataSource (usually auto-configured from `DATABASE_URL`)
+- **`python/requirements.txt`** — Python dependencies
+
+---
+
+## Quick Local Test Checklist
+
+Use this checklist to verify the system is working end-to-end locally:
+
+### Backend (Node.js)
+- [ ] `.env` file exists in project root with valid `DATABASE_URL`
+- [ ] `npm install` completed without errors
+- [ ] `npm run migration:run` executed successfully
+- [ ] `npm run dev` starts server on port 3000
+- [ ] `curl http://localhost:3000/health` returns `{ "status": "ok" }`
+- [ ] Database tables exist: `tenant`, `user`, `land`, `disaster_event`
+
+### Python Setup
+- [ ] Virtual environment created and activated
+- [ ] `pip install -r requirements.txt` completed without errors
+- [ ] `FIREWORKS_API_KEY` is set in `.env` (or environment)
+
+### Python Module Tests
+```bash
+# Run from inside python/ directory
+python -m testing.sandbox_test       # ✅ Full pipeline with mock data
+python -m tts.text_to_speech          # ✅ Generate sample audio in all languages
+python -m ingestion.firms_fetch       # ✅ Start live FIRMS data sync
+python -m inference.fireworks_client  # ✅ Real Fireworks call (uses API credits)
+```
+
+### Integration Verification
+- [ ] `POST /spatial-check` endpoint returns mock hazard data
+- [ ] Python inference pipeline accepts `HazardPayload` from backend
+- [ ] TTS generates audio in all 5 supported languages
+- [ ] No TypeORM/database errors in server logs
+
+### Docker (Optional)
+```bash
+# Build the Python GenAI container
+docker build -t zameeneye-genai .
+
+# Run with environment variables
+docker run --env-file .env zameeneye-genai
+```
+
+---
+
+## Troubleshooting
+
+### Backend Issues
+
+**Error: `ENOENT: no such file or directory, open '.env'`**
+- **Cause:** `.env` file is not in the project root (same level as `package.json`).
+- **Fix:** Create `.env` in the root directory, not inside `src/`.
+
+**Error: `password authentication failed for user "postgres"`**
+- **Cause:** Invalid or expired `DATABASE_URL` in `.env`.
+- **Fix:** Verify the connection string from Supabase, use the Session Pooler, not Direct.
+
+**Error: `TypeORM entity filenames must match import casing`**
+- **Cause:** Filename case mismatch between import and actual file (common on Windows).
+- **Fix:** Keep import casing consistent with actual filenames (`User.ts` not `user.ts`).
+
+**Server starts but endpoints return `Cannot GET /spatial-check`**
+- **Cause:** Routes not properly mounted in `app.ts`.
+- **Fix:** Verify `spatialRoutes` and `ingestFirmsRoutes` are imported and mounted in `src/app.ts`.
+
+### Python Issues
+
+**Error: `ModuleNotFoundError: No module named 'prompts'`**
+- **Cause:** Not running from inside the `python/` directory with the `-m` flag.
+- **Fix:** Always run `python -m module.path` from inside `python/` directory.
+
+**Error: `FIREWORKS_API_KEY` not found**
+- **Cause:** Environment variable not set or `.env` not loaded.
+- **Fix:** Add `FIREWORKS_API_KEY=xxx` to `.env` and ensure it's loaded before running inference.
+
+**Error: `Expected HazardPayload but got unexpected schema`**
+- **Cause:** Backend output doesn't match `prompts/schema.py` → `HazardPayload` contract.
+- **Fix:** Review `python/README.md` for input contract details; sync with backend team.
+
+### Database Issues
+
+**Error: `gen_random_uuid()` function not found**
+- **Cause:** PostgreSQL version < 13 or `pgcrypto` extension not installed.
+- **Fix:** Use Supabase (supports natively) or enable `pgcrypto` on your Postgres.
+
+**Error: `PostGIS GIST index not found` (slow spatial queries)**
+- **Cause:** Migrations didn't create spatial indexes.
+- **Fix:** Ensure `npm run migration:run` completed; verify indexes with `\di` in psql.
+
+---
+
+## Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+1. **Feature branches:** Create a branch from `main` for each feature/fix.
+2. **Commit messages:** Use clear, descriptive messages (e.g., `feat: add multilingual TTS support`).
+3. **Testing:** Run the local test checklist before opening a PR.
+4. **Documentation:** Update README.md and relevant docs if your changes affect architecture or setup.
+5. **Code review:** All PRs require review before merge.
+
+---
+
+## License
+
+This project is licensed under the ISC License. See LICENSE file for details.
+
+---
+
+## Project Contacts & Resources
+
+- **Backend (Kai):** TypeScript/Node.js, API, database
+- **AI/Inference (Thammnah):** Python, LLM, multilingual advisories
+- **Infrastructure:** AMD ROCm, PostgreSQL/PostGIS, Supabase
+- **Repo:** [github.com/yarrbakr/ZameenEye-AI](https://github.com/yarrbakr/ZameenEye-AI)
+
+Last updated: July 2026
